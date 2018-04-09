@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+	<meta charset="utf-8">
+	<title>Search | LeanWork Dev Blog</title>
+	<meta name="description" content="Desenvolvimento, web, mobile, UX e Scrum - Aprenda com os desenvolvedores da LeanWork">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+
+	<!-- Canonical -->
+	<link rel="canonical" href="/search.html">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/atom+xml" title="LeanWork Dev Blog" href="/feed.xml" />
+
+	<!-- Font Awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+
+	<!-- KaTeX -->
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script>
+	
+
+	<!-- Google Analytics -->
+	
+</head>
+
+  <body>
+    <header class="site-header">
+	<div class="branding">
+		
+		<a href="/">
+			<img class="avatar" src="/assets/img/avatar.png" alt=""/>
+		</a>
+		
+		<h1 class="site-title">
+			<a href="/">LeanWork Dev Blog</a>
+		</h1>
+	</div>
+	<nav class="site-nav">
+		<ul>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<li>
+				<a class="page-link" href="/quem-somos/">
+					Quem Somos
+				</a>
+			</li>
+			
+			
+			
+			
+			
+			<li>
+				<a class="page-link" href="/tags.html">
+					Tags
+				</a>
+			</li>
+			
+			
+			<!-- Social icons from Font Awesome, if enabled  -->
+			
+
+
+<li>
+	<a href="mailto:contato@leanwork.com.br" title="Email">
+		<i class="fa fa-fw fa-envelope"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.facebook.com/leanwork" title="Siga-nos Facebook">
+		<i class="fa fa-fw fa-facebook"></i>
+	</a>
+</li>
+
+
+
+
+
+<li>
+	<a href="https://github.com/leanwork" title="Siga-nos GitHub">
+		<i class="fa fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.linkedin.com/company/leanwork-tecnologia/" title="Siga-nos LinkedIn">
+		<i class="fa fa-fw fa-linkedin"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <!-- Search bar -->
+            
+		</ul>
+	</nav>
+    
+</header>
+
+    <div class="content">
+      <article >
+  <header style="background-image: url('/')">
+    <h1 class="title">Search</h1>
+    
+  </header>
+  <section class="post-content"><div class="search">
+    <div id="search-results"></div>
+    <p id="not-found" style="display: none">
+        Não encontramos o que voce procurava :(
+    </p>
+</div>
+
+
+<script>
+  window.store = {
+    
+      "2018-04-08-javascript-qual-a-diferenca-de-usar-for-ou-foreach-html": {
+        "title": "Javascript – Qual a diferença de usar for ou forEach",
+        "tags": "javascript, dev",
+        "date": "April 8, 2018",
+        "author": "",
+        "category": "",
+        "content": "Se recentemente você começou estudar Javascript, ou utiliza a linguagem há algum tempo, já deve ter se questionado a diferença entre usar for (loop clássico) e forEach (método em arrays).Neste post, gostaria discutir as vantagens de utilização dos respectivos loops. Vamos lá ;)Preparando o códigovar i, values = [], sum = 0;for (i = 0; i &lt; 10000; i++) {    values[i] = i;}function add(val) {    sum += val;}// for simplesfor (i = 0; i &lt; values.length; i++) {    add(values[i]);}// forEachvalues.forEach(add);Performance vs Legibilidade do CódigoQuanto a performance a diferença pode ser imperceptível em sua aplicação, no entanto em boa parte das utilizações, o loop clássico for é mais rápido! Caso queira comparar os resultados, segue testes realizados por desenvolvedores da comunidade Clique Aqui .Como dito esse desempenho pode não fazer diferença na sua aplicação, e o uso excessivo de for pode tornar o código mais difícil de ler. Com o uso de forEach , teremos menos linhas de código, e eliminamos as variáveis temporárias de contador. Tornando o código mais fácil de ler e aumentando sua manutenibilidade.Quando utilizar o laço For?Imagine uma lista longa de produtos e, assim que encontrar um que corresponda a alguns critérios, quero realizar alguma ação. Com a utilização do forEach(), iria iterar sobre cada produto, resultando em iterações desnecessárias, potencialmente causando problemas de desempenho, dependendo do tamanho da matriz.Com um loop for, você tem a capacidade de impedir que o loop continue até o fim da interação. Por exemplo:for (var i = 0; i &lt; produtos.length; i++) {  if (comparaCriterios(products[i])) {    facaAlgo();    break;  }}No exemplo acima utilizamos a palavra chave break, para podemos impedir que o loop continue assim que encontramos o que procurávamos. A partir do ES6, há um novo método para encontrar um elemento, que é bem semelhante ao que fazemos no código acima. Este método é o find().ConclusãoEsse post é uma abordagem direta para podermos analisar os cenários de utilização dos loops for e forEach na linguagem JavaScript. A prática e estudo constante dos recursos da linguagem contribuem para a escrita de códigos limpos e eficientes.O post foi baseado no artigo The for Loop vs. forEach in JavaScript onde o autor analisa mais a fundo o desempenho dos loops.",
+        "url": "//2018/04/08/javascript-qual-a-diferenca-de-usar-for-ou-foreach.html"
+      }
+      
+    
+  };
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/0.7.1/lunr.min.js"></script>
+<script src="/assets/js/search.js"></script>
+</section>
+</article>
+
+    </div>
+    
+<script src="/assets/js/katex_init.js"></script>
+
+
+
+<footer class="site-footer">
+	<p class="text">2018 - Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/rohanchandra/type-theme">Type Theme</a>
+</p>
+</footer>
+
+
+  </body>
+</html>

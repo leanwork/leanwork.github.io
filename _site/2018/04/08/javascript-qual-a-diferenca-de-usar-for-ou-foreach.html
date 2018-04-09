@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html class="no-js">
+  <head>
+	<meta charset="utf-8">
+	<title>Javascript – Qual a diferença de usar for ou forEach | LeanWork Dev Blog</title>
+	<meta name="description" content="Se recentemente você começou estudar Javascript, ou utiliza a linguagem há algum tempo, já deve ter se questionado a diferença entre usar for (loop clássico)...">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="/assets/css/main.css">
+
+	<!--Favicon-->
+	<link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+
+	<!-- Canonical -->
+	<link rel="canonical" href="/2018/04/08/javascript-qual-a-diferenca-de-usar-for-ou-foreach.html">
+
+	<!-- RSS -->
+	<link rel="alternate" type="application/atom+xml" title="LeanWork Dev Blog" href="/feed.xml" />
+
+	<!-- Font Awesome -->
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+	<!-- Google Fonts -->
+	
+	<link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css">
+	
+
+	<!-- KaTeX -->
+	
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script>
+	
+
+	<!-- Google Analytics -->
+	
+</head>
+
+  <body>
+    <header class="site-header">
+	<div class="branding">
+		
+		<a href="/">
+			<img class="avatar" src="/assets/img/avatar.png" alt=""/>
+		</a>
+		
+		<h1 class="site-title">
+			<a href="/">LeanWork Dev Blog</a>
+		</h1>
+	</div>
+	<nav class="site-nav">
+		<ul>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			<li>
+				<a class="page-link" href="/quem-somos/">
+					Quem Somos
+				</a>
+			</li>
+			
+			
+			
+			
+			
+			<li>
+				<a class="page-link" href="/tags.html">
+					Tags
+				</a>
+			</li>
+			
+			
+			<!-- Social icons from Font Awesome, if enabled  -->
+			
+
+
+<li>
+	<a href="mailto:contato@leanwork.com.br" title="Email">
+		<i class="fa fa-fw fa-envelope"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.facebook.com/leanwork" title="Siga-nos Facebook">
+		<i class="fa fa-fw fa-facebook"></i>
+	</a>
+</li>
+
+
+
+
+
+<li>
+	<a href="https://github.com/leanwork" title="Siga-nos GitHub">
+		<i class="fa fa-fw fa-github"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+<li>
+	<a href="https://www.linkedin.com/company/leanwork-tecnologia/" title="Siga-nos LinkedIn">
+		<i class="fa fa-fw fa-linkedin"></i>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            <!-- Search bar -->
+            
+		</ul>
+	</nav>
+    
+</header>
+
+    <div class="content">
+      <article >
+  <header style="background-image: url('/')">
+    <h1 class="title">Javascript – Qual a diferença de usar for ou forEach</h1>
+    
+    <p class="meta">
+      April 8, 2018
+      
+    </p>
+  </header>
+  <section class="post-content"><p>Se recentemente você começou estudar Javascript, ou utiliza a linguagem há algum tempo, já deve ter se questionado a diferença entre usar for (loop clássico) e forEach (método em arrays).</p>
+
+<p>Neste post, gostaria discutir as vantagens de utilização dos respectivos loops. Vamos lá ;)</p>
+
+<h2 id="preparando-o-código">Preparando o código</h2>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">i</span><span class="p">,</span> <span class="nx">values</span> <span class="o">=</span> <span class="p">[],</span> <span class="nx">sum</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">10000</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">values</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">i</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">add</span><span class="p">(</span><span class="nx">val</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">sum</span> <span class="o">+=</span> <span class="nx">val</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// for simples</span>
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">values</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">add</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">// forEach</span>
+<span class="nx">values</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">add</span><span class="p">);</span></code></pre></figure>
+
+<h2 id="performance-vs-legibilidade-do-código">Performance vs Legibilidade do Código</h2>
+
+<p>Quanto a performance a diferença pode ser imperceptível em sua aplicação, no entanto em boa parte das utilizações, o loop clássico for é mais rápido! Caso queira comparar os resultados, segue testes realizados por desenvolvedores da comunidade <a href="https://jsperf.com/for-vs-foreach">Clique Aqui</a> .</p>
+
+<p>Como dito esse desempenho pode não fazer diferença na sua aplicação, e o uso excessivo de for pode tornar o código mais difícil de ler. Com o uso de forEach , teremos menos linhas de código, e eliminamos as variáveis temporárias de contador. Tornando o código mais fácil de ler e aumentando sua manutenibilidade.</p>
+
+<h2 id="quando-utilizar-o-laço-for">Quando utilizar o laço For?</h2>
+
+<p>Imagine uma lista longa de produtos e, assim que encontrar um que corresponda a alguns critérios, quero realizar alguma ação. Com a utilização do forEach(), iria iterar sobre cada produto, resultando em iterações desnecessárias, potencialmente causando problemas de desempenho, dependendo do tamanho da matriz.</p>
+
+<p>Com um loop for, você tem a capacidade de impedir que o loop continue até o fim da interação. Por exemplo:</p>
+
+<figure class="highlight"><pre><code class="language-js" data-lang="js"><span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">produtos</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">comparaCriterios</span><span class="p">(</span><span class="nx">products</span><span class="p">[</span><span class="nx">i</span><span class="p">]))</span> <span class="p">{</span>
+    <span class="nx">facaAlgo</span><span class="p">();</span>
+    <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>No exemplo acima utilizamos a palavra chave <strong>break</strong>, para podemos impedir que o loop continue assim que encontramos o que procurávamos. A partir do <em>ES6</em>, há um novo método para encontrar um elemento, que é bem semelhante ao que fazemos no código acima. Este método é o <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find">find()</a>.</p>
+
+<h2 id="conclusão">Conclusão</h2>
+
+<p>Esse post é uma abordagem direta para podermos analisar os cenários de utilização dos loops for e forEach na linguagem JavaScript. A prática e estudo constante dos recursos da linguagem contribuem para a escrita de códigos limpos e eficientes.</p>
+
+<p>O post foi baseado no artigo <a href="https://thejsguy.com/2016/07/30/javascript-for-loop-vs-array-foreach.html">The for Loop vs. forEach in JavaScript</a> onde o autor analisa mais a fundo o desempenho dos loops.</p>
+
+</section>
+  
+<footer>
+  <div class="tags">
+    
+    <a class="tag" href="/tags#javascript">#javascript</a>
+    
+    <a class="tag" href="/tags#dev">#dev</a>
+    
+  </div>
+</footer>
+
+
+</article>
+
+<!-- Disqus -->
+
+<div class="comments">
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+	var disqus_shortname = 'Comentar';
+	(function() {
+		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+	})();
+</script>
+<noscript>Por favor habilite o JavaScript do seu navegador para ver os comentários.</noscript>
+
+</div>
+
+
+<!-- Post navigation -->
+
+
+    </div>
+    
+<script src="/assets/js/katex_init.js"></script>
+
+
+
+<footer class="site-footer">
+	<p class="text">2018 - Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/rohanchandra/type-theme">Type Theme</a>
+</p>
+</footer>
+
+
+  </body>
+</html>
