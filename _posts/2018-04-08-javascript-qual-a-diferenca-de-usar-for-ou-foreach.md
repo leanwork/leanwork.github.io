@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Javascript – Qual a diferença de usar for ou forEach
+feature-img: "assets/img/javascript-cover.png"
 tags: [javascript,dev]
 ---
 

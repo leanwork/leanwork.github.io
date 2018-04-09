@@ -5,7 +5,7 @@
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
     <link>http://localhost:4000/</link>
     <description>Desenvolvimento, web, mobile, UX e Scrum - Aprenda com os desenvolvedores da LeanWork</description>
-    <pubDate>Mon, 09 Apr 2018 01:26:52 +0000</pubDate>
+    <pubDate>Mon, 09 Apr 2018 01:46:16 +0000</pubDate>
     
       <item>
         <title>Javascript – Qual a diferença de usar for ou forEach</title>
